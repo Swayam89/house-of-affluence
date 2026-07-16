@@ -958,7 +958,7 @@
   <!-- Chapter II — Craft -->
   <section id="craft" class="craft"><div class="wrap">
     <div class="craft-grid">
-      <div class="craft-visual reveal"><img data-src="https://www.instagram.com/p/DapUovANUIA/media/?size=l" alt="House of Affluence atelier"></div>
+      <div class="craft-visual reveal"><img data-src="hoa-atelier.jpg" alt="House of Affluence atelier"></div>
       <div class="craft-copy">
         <div class="label reveal">Chapter II — The Craft</div>
         <h2 class="reveal">From a sketch to a <em>shimmering reality</em>.</h2>
@@ -1017,27 +1017,26 @@
   ScrollTrigger.config({ ignoreMobileResize: true });
   addEventListener('orientationchange', () => setTimeout(() => ScrollTrigger.refresh(), 400));
 
-  /* ================= DATA (from brand dossier) ================= */
-  const IMG = c => `https://www.instagram.com/p/${c}/media/?size=l`;
+  /* ================= DATA (photos courtesy of the atelier, via WhatsApp) ================= */
   const wa = t => `https://wa.me/919106388536?text=${encodeURIComponent(t)}`;
   const strip = s => s.replace(/<[^>]+>/g, '');
 
   const pieces = [
-    {code:'DZxItJENGLv', cat:'Earrings',  name:'The Emerald <em>Statement</em>', line:'An emerald caught in a halo of brilliance — presence, worn.', spec:[['Emerald','Centre stone'],['Marquise + round','Diamond halo']]},
-    {code:'DYj5hUKtwMp', cat:'Necklaces', name:'The <em>Cascade</em>', line:'Designed to drape you in luxury — diamonds that shimmer from every angle.', spec:[['Rivière','Silhouette'],['Hand-set','Every stone']]},
-    {code:'DaNcdbEtGYJ', cat:'Bracelets', name:'Eternal <em>Tennis</em>', line:'A continuous line of fire for the wrist — the piece she never takes off.', spec:[['Round brilliant','Cut'],['Made to length','Bespoke']]},
-    {code:'DaF4HyzNcX4', cat:'Rings',     name:'The <em>Bloom</em> Solitaire', line:'Gold and diamond, blossoming — a promise waiting to be kept.', spec:[['Cluster','Setting'],['18k gold','Band']]},
-    {code:'DaDTMystAEA', cat:'Rings',     name:'Azure <em>Muse</em>', line:'A serene blue heart, framed in brilliant diamonds like light on the ocean.', spec:[['Blue gem','Centre'],['Pavé halo','Frame']]},
-    {code:'DYPEkiajZNQ', cat:'Rings',     name:'Toi et <em>Moi</em>', line:'Two souls, two cuts, one timeless statement. Because one diamond was never enough.', spec:[['Emerald + Pear','Duo'],['Bypass','Design']]},
+    {img:'piece-emerald-statement.jpg', cat:'Earrings',  name:'The Emerald <em>Statement</em>', line:'An emerald caught in a halo of brilliance — presence, worn.', spec:[['Emerald','Centre stone'],['Marquise + round','Diamond halo']]},
+    {img:'piece-cascade.jpg', cat:'Necklaces', name:'The <em>Cascade</em>', line:'Designed to drape you in luxury — diamonds that shimmer from every angle.', spec:[['Rivière','Silhouette'],['Hand-set','Every stone']]},
+    {img:'piece-eternal-tennis.jpg', cat:'Bracelets', name:'Eternal <em>Tennis</em>', line:'A continuous line of fire for the wrist — the piece she never takes off.', spec:[['Round brilliant','Cut'],['Made to length','Bespoke']]},
+    {img:'piece-bloom-solitaire.jpg', cat:'Rings',     name:'The <em>Bloom</em> Solitaire', line:'Gold and diamond, blossoming — a promise waiting to be kept.', spec:[['Cluster','Setting'],['18k gold','Band']]},
+    {img:'piece-azure-muse.jpg', cat:'Rings',     name:'Azure <em>Muse</em>', line:'A serene blue heart, framed in brilliant diamonds like light on the ocean.', spec:[['Blue gem','Centre'],['Pavé halo','Frame']]},
+    {img:'piece-toi-et-moi.jpg', cat:'Rings',     name:'Toi et <em>Moi</em>', line:'Two souls, two cuts, one timeless statement. Because one diamond was never enough.', spec:[['Emerald + Pear','Duo'],['Bypass','Design']]},
   ];
 
   const archive = [
-    {code:'DYUUKl5MGA1', name:'Timeless Tennis Stack', cat:'Bracelets'},
-    {code:'DYgqFnkNh5B', name:'Golden Brilliance', cat:'Fancy colour'},
-    {code:'DaK3_TfNcmm', name:'Everyday Studs', cat:'Earrings'},
-    {code:'DZhfSIijeBH', name:'Getaway Ring', cat:'Rings'},
-    {code:'DYZEXUgNnBk', name:'Sapphire Collection', cat:'Necklaces'},
-    {code:'DZZ5_ixjZhC', name:'Marquise Muse', cat:'Rings'},
+    {img:'arch-tennis-stack.jpg', name:'Timeless Tennis Stack', cat:'Bracelets'},
+    {img:'arch-golden-brilliance.jpg', name:'Golden Brilliance', cat:'Fancy colour'},
+    {img:'arch-everyday-studs.jpg', name:'Everyday Studs', cat:'Earrings'},
+    {img:'arch-getaway-ring.jpg', name:'Getaway Ring', cat:'Rings'},
+    {img:'arch-sapphire.jpg', name:'Sapphire Collection', cat:'Necklaces'},
+    {img:'arch-marquise-muse.jpg', name:'Marquise Muse', cat:'Rings'},
   ];
 
   /* build film panels */
@@ -1045,7 +1044,7 @@
   pieces.forEach((p, i) => {
     const el = document.createElement('section');
     el.className = 'film';
-    el.innerHTML = `<div class="film-bg"><img data-src="${IMG(p.code)}" alt="${strip(p.name)}"></div><div class="film-grade"></div>
+    el.innerHTML = `<div class="film-bg"><img data-src="${p.img}" alt="${strip(p.name)}"></div><div class="film-grade"></div>
       <div class="film-copy">
         <div class="fno reveal">${String(i+1).padStart(2,'0')} / 06</div>
         <div class="fcat reveal">${p.cat}</div>
@@ -1064,7 +1063,7 @@
     c.className = 'arch-card';
     c.href = wa(`Hi House of Affluence! Tell me more about "${a.name}".`);
     c.target = '_blank'; c.rel = 'noopener';
-    c.innerHTML = `<div class="ph"><img data-src="${IMG(a.code)}" alt="${a.name}"></div><div class="cap"><span class="nm">${a.name}</span><span class="ct">${a.cat}</span></div>`;
+    c.innerHTML = `<div class="ph"><img data-src="${a.img}" alt="${a.name}"></div><div class="cap"><span class="nm">${a.name}</span><span class="ct">${a.cat}</span></div>`;
     ar.appendChild(c);
   });
 
